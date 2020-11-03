@@ -9,7 +9,11 @@ $(document).ready(function(e){
       $.ajax({
    
         // The URL for the request
+<<<<<<< HEAD
         url: "https://hapnanarsad.tech/produk/getall",
+=======
+        url: "http://localhost:8080/produk/getall",
+>>>>>>> 119e01efca772c9ecb8c6071c59fa6959ec1d4eb
         // Whether this is a POST or GET request
         type: "GET",
         // The type of data we expect back
@@ -70,4 +74,8 @@ $(document).ready(function(e){
     })
 
   })
+<<<<<<< HEAD
   
+=======
+  
+>>>>>>> 119e01efca772c9ecb8c6071c59fa6959ec1d4eb
