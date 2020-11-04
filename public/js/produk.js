@@ -71,8 +71,4 @@ $(document).ready(function(e){
     })
 
   })
-<<<<<<< HEAD
   
-=======
-  
->>>>>>> 119e01efca772c9ecb8c6071c59fa6959ec1d4eb
