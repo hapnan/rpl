@@ -6,7 +6,7 @@ class Cart extends Model
 {
     protected $table = 'cart';
     protected $useTimestamps = true;
-    
+    protected $returnType     = 'array'; 
     protected $allowedFields = ['id_brg', 'id_user','jumlah', 'harga'];
 
     public function search($data)

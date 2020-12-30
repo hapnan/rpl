@@ -222,7 +222,7 @@
             </button>
           </div>
           <div class="modal-body">
-            <table class="table">
+            <table class="table" id="tambah-barang">
               <thead class="thead-dark">
                 <tr>
                   <th scope="col">#</th>
@@ -237,7 +237,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes <span class="badge badge-light badge-modal-order">0</span></button>
+            <button type="button" class="btn btn-primary" id="button-save">Save changes <span class="badge badge-light badge-modal-order">0</span></button>
           </div>
         </div>
       </div>

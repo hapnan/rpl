@@ -10,7 +10,7 @@ $(document).ready(function(e){
    
         // The URL for the request
 
-        url: "https://hapnanarsad.tech/produk/getall",
+        url: "http://localhost:8080/produk/getall",
         // Whether this is a POST or GET request
         type: "GET",
         // The type of data we expect back
@@ -62,13 +62,57 @@ $(document).ready(function(e){
 
     $('#pilih-barang').on('shown.bs.modal', function () {
         j = 0;
+        var count = 0;
         $('td').on("click", "button", function(){
           var id = this.id ;
-          var serializ = this.val;
-          console.log(id, serializ  );
-       });
-     
-    })
+          var data = $("td :input").val();
+          count++;
+          $.ajax({
+   
+            // The URL for the request
+    
+            url: "http://localhost:8080/produk/cartsementara",
+            // Whether this is a POST or GET request
+            type: "POST",
+            // data yang dikirim
+            data: {"id": id, "jumlah" : data},
+            // The type of data we expect back
+            dataType : "json",
+        })
+          // Code to run if the request succeeds (is done);
+          // The response is passed to the function
+          .done(function( json ) {
+            var i = 1;
+            txt = "";
+            try {
+                $('.badge-modal-order').val(count);
+                
+            } catch (error) {
+                alert(error);
+            }
+             
+          })
+          // Code to run if the request fails; the raw request and
+          // status codes are passed to the function
+          .fail(function( xhr, status, errorThrown ) {
+            alert( "Sorry, there was a problem!" );
+            console.log( "Error: " + errorThrown );
+            console.log( "Status: " + status );
+            console.dir( xhr );
+          })
+          // Code to run regardless of success or failure;
+          .always(function( xhr, status ) {
+            console.log(status);
+          });
 
+        });
+        
+        
+      })
+      
+      $('.button-save').on('click', function(){
+          alert("test");
+
+      });
   })
   
