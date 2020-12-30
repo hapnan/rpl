@@ -7,7 +7,6 @@ class Data_barang extends Model
     protected $table = 'data_barang';
     protected $useTimestamps = true;
     
-    protected $allowedFields = ['nama_brg', 'slug','harga'];
 
     public function search($data)
     {

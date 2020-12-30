@@ -60,7 +60,6 @@ class Produk extends BaseController
 
         return $this->setResponseFormat('json')->respond($data, 200);
     }
-	//--------------------------------------------------------------------
 
     public function cartsementara()
     {
