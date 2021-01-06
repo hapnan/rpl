@@ -76,6 +76,7 @@ class Produk extends BaseController
         $id = $this->request->getVar('id');
         $prd_jumlah = $this->request->getVar('jumlah');
         $data = $this->produk->find($id);
+        $id_user = user_id();
         $cekdata = $this->cart_s->where('id_brg', $id)->findAll();
         
         if (empty($cekdata)) {
@@ -83,7 +84,7 @@ class Produk extends BaseController
             
             $cartS = [
                 'id_brg' => $data['id'],
-                'id_user' => 1,
+                'id_user' => $id_user,
                 'jumlah' => $prd_jumlah,
                 'harga_total' => $harga
             ];
@@ -106,7 +107,7 @@ class Produk extends BaseController
                 'harga_total' => $harga_s
             ];
             
-            $this->cart_s->where('id_brg', $id, 'id_user', 1)->set($cartS)->update();
+            $this->cart_s->where('id_brg', $id, 'id_user', $id_user)->set($cartS)->update();
 
                 $response = [
                     'status'   => 200,

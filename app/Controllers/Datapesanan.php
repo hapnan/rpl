@@ -114,6 +114,7 @@ class Datapesanan extends BaseController
     public function detail($id)
     {
         $data = $this->datapesanan->getdatajoin($id);
+        
         $dataolah['data1'] = [
             'status' => "Menunggu Konfirmasi",
             'tgl_pesan' => $data[0]['tgl_pesan'],
