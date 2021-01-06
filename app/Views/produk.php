@@ -20,7 +20,7 @@
           <div>
               <a href="#" class="sidebar__logo">
                 <img src="<?= base_url();?>/img/logo.svg" alt="" class="sidebar__logo-icon">
-                <span class="sidebar__logo-text">Bedimcode</span>
+                <span class="sidebar__logo-text">Pedang V1</span>
               </a>
     
               <div class="sidebar__toggle" id="sidebar-toggle">
@@ -28,19 +28,19 @@
               </div>
     
               <ul class="sidebar__list">
-                  <a href="#" class="sidebar__link">
+                  <a href="<?= base_url();?>" class="sidebar__link ">
                       <span class='bx bx-grid-alt sidebar__icon material-icons'>dashboard</span>
                       <span class="sidebar__text">Home</span>
                   </a>
-                  <a href="#" class="sidebar__link">
+                  <a href="<?= base_url('datapesanan');?>" class="sidebar__link">
                       <span class="bx bx-grid-alt sidebar__icon material-icons">assignment</span>
                       <span class="sidebar__text">Data Pesanan</span>
                   </a>
-                  <a href="#" class="sidebar__link active">
+                  <a href="<?= base_url('produk')?>" class="sidebar__link active">
                       <span class="bx bx-grid-alt sidebar__icon material-icons">list</span>
                       <span class="sidebar__text">Data Produk</span>
                   </a>
-                  <a href="#" class="sidebar__link">
+                  <a href="<?= base_url('logout')?>" class="sidebar__link">
                       <span class="bx bx-grid-alt sidebar__icon material-icons">exit_to_app</span>
                       <span class="sidebar__text">Logout</span>
                   </a>                 

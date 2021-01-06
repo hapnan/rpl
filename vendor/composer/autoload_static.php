@@ -7,8 +7,8 @@ namespace Composer\Autoload;
 class ComposerStaticInita3f2c9c0cd59df8fedce059703f3eaf0
 {
     public static $files = array (
-        '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
         '7e9bd612cc444b3eed788ebbe46263a0' => __DIR__ . '/..' . '/laminas/laminas-zendframework-bridge/src/autoload.php',
+        '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
         '3917c79c5052b270641b5a200963dbc2' => __DIR__ . '/..' . '/kint-php/kint/init.php',
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
     );
@@ -24,6 +24,7 @@ class ComposerStaticInita3f2c9c0cd59df8fedce059703f3eaf0
         ),
         'T' => 
         array (
+            'Translations\\' => 13,
             'Tests\\Support\\' => 14,
         ),
         'S' => 
@@ -34,6 +35,10 @@ class ComposerStaticInita3f2c9c0cd59df8fedce059703f3eaf0
         array (
             'Psr\\Log\\' => 8,
             'Prophecy\\' => 9,
+        ),
+        'M' => 
+        array (
+            'Myth\\Auth\\' => 10,
         ),
         'L' => 
         array (
@@ -70,6 +75,10 @@ class ComposerStaticInita3f2c9c0cd59df8fedce059703f3eaf0
         array (
             0 => __DIR__ . '/..' . '/webmozart/assert/src',
         ),
+        'Translations\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/codeigniter4/translations',
+        ),
         'Tests\\Support\\' => 
         array (
             0 => __DIR__ . '/../..' . '/tests/_support',
@@ -85,6 +94,10 @@ class ComposerStaticInita3f2c9c0cd59df8fedce059703f3eaf0
         'Prophecy\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpspec/prophecy/src/Prophecy',
+        ),
+        'Myth\\Auth\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/myth/auth/src',
         ),
         'Laminas\\ZendFrameworkBridge\\' => 
         array (

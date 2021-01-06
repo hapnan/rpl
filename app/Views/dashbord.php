@@ -20,7 +20,7 @@
           <div>
               <a href="#" class="sidebar__logo">
                 <img src="<?= base_url();?>/img/logo.svg" alt="" class="sidebar__logo-icon">
-                <span class="sidebar__logo-text">Bedimcode</span>
+                <span class="sidebar__logo-text">Pedang V1</span>
               </a>
     
               <div class="sidebar__toggle" id="sidebar-toggle">
@@ -28,19 +28,19 @@
               </div>
     
               <ul class="sidebar__list">
-                  <a href="#" class="sidebar__link active">
+                  <a href="<?= base_url();?>" class="sidebar__link active">
                       <span class='bx bx-grid-alt sidebar__icon material-icons'>dashboard</span>
                       <span class="sidebar__text">Home</span>
                   </a>
-                  <a href="#" class="sidebar__link">
+                  <a href="<?= base_url('datapesanan');?>" class="sidebar__link">
                       <span class="bx bx-grid-alt sidebar__icon material-icons">assignment</span>
                       <span class="sidebar__text">Data Pesanan</span>
                   </a>
-                  <a href="#" class="sidebar__link">
+                  <a href="<?= base_url('produk')?>" class="sidebar__link">
                       <span class="bx bx-grid-alt sidebar__icon material-icons">list</span>
                       <span class="sidebar__text">Data Produk</span>
                   </a>
-                  <a href="#" class="sidebar__link">
+                  <a href="<?= base_url('logout')?>" class="sidebar__link">
                       <span class="bx bx-grid-alt sidebar__icon material-icons">exit_to_app</span>
                       <span class="sidebar__text">Logout</span>
                   </a>                 
@@ -69,8 +69,7 @@
   <div class="info mt-5">
     <div class="row">
       <div class="col-lg-4 mt-sm-2">
-        <div class="row">
-          <div class="col-sm-12 col-md-12 col-lg-8 offset-md-2">
+        <div class="d-flex justify-content-center">
             <div class="card">
               <div class="card-body">
                 <h5 class="card-title">Total Transaksi</h5>
@@ -87,12 +86,10 @@
                 </div>
               </div>
             </div>
-          </div>
         </div>
       </div>
       <div class="col-lg-4 mt-sm-2">
-        <div class="row">
-          <div class="col-sm-12 col-md-12 col-lg-8  offset-md-2">
+        <div class="d-flex justify-content-center">
             <div class="card">
               <div class="card-body">
                 <h5 class="card-title">Pesanan Diproses</h5>
@@ -107,12 +104,10 @@
                 </div>
               </div>
             </div>
-          </div>
         </div>
       </div>
       <div class="col-lg-4 mt-sm-2">
-        <div class="row">
-          <div class="col-sm-12 col-md-12 col-lg-8 offset-md-2">
+        <div class="d-flex justify-content-center">
             <div class="card">
               <div class="card-body">
                 <h5 class="card-title">Total Produk</h5>
@@ -127,7 +122,6 @@
                 </div>
               </div>
             </div>
-          </div>
         </div>
       </div>
     </div>
@@ -144,7 +138,7 @@
         <div class="card-title">
           <h3 class="text-center">Form Order Barang</h3>
         </div>
-        <form>
+        <form action="<?= base_url('produk/order');?>" method="POST">
           <div class="form-row">
             <div class="form-group col-md">
               <label for="nama-toko">Nama Toko</label>
@@ -181,34 +175,17 @@
             <thead>
               <tr>
                 <th scope="col">#</th>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
-                <th scope="col">Handle</th>
+                <th scope="col">Nama Barang</th>
+                <th scope="col">Jumlah</th>
+                <th scope="col">Harga</th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-              </tr>
+            <tbody class="target-cart">
+              
             </tbody>
           </table>
           <button type="button" class="btn btn-primary" id="modal-barang">Pilih Barang</button>
-          <button type="submit" class="btn btn-primary">Sign in</button>
+          <button type="submit" class="btn btn-primary" id="button-order">Order</button>
         </form>
       </div>
     </div>

@@ -4,17 +4,23 @@ use App\Models\Data_barang;
 use App\Models\Cart_sementara;
 use App\Models\Cart;
 use CodeIgniter\API\ResponseTrait;
- 
+use DateTime;
+use phpDocumentor\Reflection\Types\Array_;
+use App\Models\Brg_pesanan;
 class Produk extends BaseController
 {
     
     use ResponseTrait;
     protected $produk;
     protected $api;
+    protected $brg;
     public function __construct()
     {
         $this->produk = new Data_barang; 
         $this->cart_s = new Cart_sementara;
+        $this->cart = new Cart;
+        $this->brg = new Brg_pesanan;
+        
     }
 
 	public function index()
@@ -79,7 +85,7 @@ class Produk extends BaseController
                 'id_brg' => $data['id'],
                 'id_user' => 1,
                 'jumlah' => $prd_jumlah,
-                'harga' => $harga
+                'harga_total' => $harga
             ];
             $this->cart_s->insert($cartS);
 
@@ -97,7 +103,7 @@ class Produk extends BaseController
             $harga_s = $data['harga'] * $jumlahfix;
             $cartS = [
                 'jumlah' => $jumlahfix,
-                'harga' => $harga_s
+                'harga_total' => $harga_s
             ];
             
             $this->cart_s->where('id_brg', $id, 'id_user', 1)->set($cartS)->update();
@@ -117,8 +123,109 @@ class Produk extends BaseController
 
     }
 
-    public function cart(Type $var = null)
+
+    public function savecart()
     {
-        # code...
+        $datacaratsemetara =  $this->cart_s->findAll();
+        
+
+        if(!empty($datacaratsemetara)){
+            foreach ($datacaratsemetara as $key ) {
+                
+                $datacart = array(
+                    'id_brg' => $key['id_brg'],
+                    'id_user' => $key['id_user'],
+                    'jumlah' => $key['jumlah'],
+                    'harga_total' => $key['harga_total']
+                );
+                $checkdatacart = $this->cart->where('id_brg', $key['id_brg'])->where('id_user', $key['id_user'])->findAll();
+                
+                if (!empty($checkdatacart)) {
+                    if ($key['id_brg'] == $checkdatacart[0]['id_brg'] && $key['id_user'] == $checkdatacart[0]['id_user'] ) {
+                        $this->cart->where('id_brg', $key['id_brg'])->where('id_user', $key['id_user'])->set($datacart)->update();
+                        $this->cart_s->where('id_user', 1)->delete();
+                        
+                    } else {
+                        $this->cart->insert($datacart);
+                        $this->cart_s->where('id_user', 1)->delete();
+                        
+                    }
+                }else {
+                    $this->cart->insert($datacart);
+                    $this->cart_s->where('id_user', 1)->delete();
+                    
+                }
+            };
+            $response = [
+                'status'   => 200,
+                'code'     => 'OK',
+                'messages' => [
+                    'Data Berhasil di tambahkan',
+                ]
+            ];
+            
+            return $this->setResponseFormat('json')->respond($response,200);
+            
+        }else{
+            $response = [
+                'status'   => 400,
+                'code'     => 'BAD',
+                'messages' => [
+                    'Data tidak Berhasil di tambakan',
+                ]
+            ];
+            return $this->setResponseFormat('json')->respond($response,400);
+        }
     }
+    
+    
+
+    public function datacart()
+    {
+        $datacratmentah =  $this->cart->jointable();
+        if(!empty($datacratmentah)){
+            foreach ($datacratmentah as $key ) {
+                
+                $datacart[] = array(
+                    'nama_brg' => $key['nama_brg'],
+                    'id_user' => $key['id_user'],
+                    'jumlah' => $key['jumlah'],
+                    'harga_total' => $key['harga_total']
+                );
+
+            }
+            
+            return $this->setResponseFormat('json')->respond($datacart,200);
+            
+        }else{
+            return $this->respondNoContent("data tidak ada");
+        }
+    }
+
+    public function order()
+    {
+        helper('date');
+        helper('array');
+        $datacart = $this->cart->findAll();
+        if (!empty($datacart)) {
+           
+            foreach ($datacart as $key ) { 
+                $cart = [
+                    'id_brg' => $key['id_brg'],
+                    'id_user' => $key['id_user'],
+                    'jumlah' => $key['jumlah'],
+                    'total_hrg' => $key['harga_total'],
+                    'status' => 0,
+                ];
+                
+                $this->brg->insert($cart);
+                $this->cart->where('id_user', $key['id_user'])->delete();
+            }
+            return redirect()->to('/home');
+        } else {
+            return redirect()->to('/home');
+        }
+        
+
+    } 
 }

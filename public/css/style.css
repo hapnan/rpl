@@ -212,7 +212,7 @@ a {
 }
 
 /*Active links menu*/
-.active {
+.sidebar__list .active {
   background-color: var(--second-color);
   color: var(--first-color);
 }
@@ -272,6 +272,50 @@ a {
   font-size: 1.5rem;
   
 }
+p.barang-lain{
+  padding-left: 15px;
+}
 
 
+p.label-total{
+  font-size: 12px;
+}
 
+p.total-belanja{
+  font-size: 15px;
+  margin-top: -12px;
+}
+
+button.button-detail{
+  float: right;
+}
+
+div.card-body.tab-content{
+  min-height: 385px;
+}
+
+div.wraper1{
+  background: white;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+div.wraper2{
+  background: white;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+
+.jumlah-barang-detail{
+  margin-top: -10px;
+}
+
+.harga-asli-detail{
+  margin-top: -16px;
+}
+
+.total-harga-detail{
+  margin-top: -13px;
+}
+.harga-detail{
+  margin-top: -20px;
+}
